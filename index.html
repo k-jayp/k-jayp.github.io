@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kidell Powell - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,20 +13,24 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #2c3e50;
-            background-color: #f8f9fa;
+            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: #1d1d1f;
+            background: #fafafa;
+            overflow-x: hidden;
         }
 
         /* Navigation */
         nav {
-            background: linear-gradient(135deg, #1e3a5f 0%, #2c5f8d 100%);
-            padding: 1rem 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 1.2rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
         }
 
         nav ul {
@@ -33,120 +38,224 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 2rem;
+            gap: 0.5rem;
             padding: 0 2rem;
         }
 
         nav a {
-            color: white;
+            color: #1d1d1f;
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
         }
 
         nav a:hover {
-            color: #d4a574;
+            background: #f5f5f7;
+            color: #0066cc;
         }
 
         /* Header */
         header {
-            background: linear-gradient(135deg, #1e3a5f 0%, #2c5f8d 50%, #8b7355 100%);
-            color: white;
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f7 100%);
+            padding: 5rem 2rem 4rem;
             text-align: center;
-            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .header-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.8s ease;
+            background: #e8e8e8;
+        }
+
+        .header-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .header-text {
+            flex: 1;
+            min-width: 300px;
+            text-align: left;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
         }
 
         header h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 0.5rem;
-            font-weight: 700;
+            font-weight: 800;
+            color: #1d1d1f;
+            letter-spacing: -1px;
         }
 
-        header p {
-            font-size: 1.3rem;
+        header .subtitle {
+            font-size: 1.5rem;
+            color: #6e6e73;
             margin-bottom: 1rem;
-            opacity: 0.95;
+            font-weight: 400;
         }
 
-        .tagline {
-            font-size: 1rem;
-            opacity: 0.9;
-            max-width: 800px;
-            margin: 0 auto;
+        header .tagline {
+            font-size: 1.1rem;
+            color: #86868b;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Sections */
         section {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
+            animation: fadeInUp 0.8s ease;
         }
 
         section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: #1e3a5f;
-            border-bottom: 3px solid #8b7355;
-            padding-bottom: 0.5rem;
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            color: #1d1d1f;
+            letter-spacing: -0.5px;
+        }
+
+        section h2 .bold {
+            font-weight: 800;
+        }
+
+        section h2 .regular {
+            font-weight: 400;
+            color: #6e6e73;
         }
 
         /* About Section */
         .about-content {
             background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
             line-height: 1.8;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
         }
 
         .about-content p {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             font-size: 1.1rem;
+            color: #1d1d1f;
         }
 
-        .skills-list {
+        /* Skills Section */
+        .skills-section {
+            margin-top: 3rem;
+        }
+
+        .skills-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #1d1d1f;
+        }
+
+        .skills-section h3 .bold {
+            font-weight: 800;
+        }
+
+        .skills-section h3 .regular {
+            font-weight: 400;
+            color: #6e6e73;
+        }
+
+        .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1rem;
-            margin-top: 2rem;
         }
 
         .skill-item {
-            background: #e8f4f8;
-            padding: 1rem;
-            border-radius: 8px;
-            border-left: 4px solid #2c5f8d;
-            font-weight: 500;
+            background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
+            padding: 1.2rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            color: #1d1d1f;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .skill-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border-color: #0066cc;
+            color: #0066cc;
         }
 
         /* Experience Section */
         .experience-item {
             background: white;
-            padding: 2rem;
+            padding: 2.5rem;
             margin-bottom: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            border-left: 5px solid #2c5f8d;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .experience-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            border-left-color: #0066cc;
         }
 
         .experience-item h3 {
-            color: #1e3a5f;
+            color: #1d1d1f;
             font-size: 1.8rem;
             margin-bottom: 0.5rem;
+            font-weight: 800;
         }
 
         .experience-item .company {
-            color: #8b7355;
+            color: #0066cc;
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 0.3rem;
         }
 
         .experience-item .date-location {
-            color: #666;
-            font-style: italic;
-            margin-bottom: 1rem;
+            color: #86868b;
+            font-style: normal;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
         }
 
         .experience-item ul {
@@ -155,82 +264,91 @@
         }
 
         .experience-item li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            color: #1d1d1f;
         }
 
         /* Projects Section */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
 
         .project-card {
             background: white;
-            border-radius: 10px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0, 0, 0, 0.04);
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-        }
-
-        .project-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
         }
 
         .project-content {
-            padding: 1.5rem;
+            padding: 2rem;
         }
 
         .project-card h3 {
-            color: #1e3a5f;
+            color: #1d1d1f;
             margin-bottom: 1rem;
             font-size: 1.5rem;
+            font-weight: 800;
         }
 
         .project-card p {
-            color: #555;
-            line-height: 1.6;
+            color: #6e6e73;
+            line-height: 1.7;
         }
 
         .project-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
 
         .tag {
-            background: #e8f4f8;
-            color: #2c5f8d;
-            padding: 0.3rem 0.8rem;
+            background: #f5f5f7;
+            color: #1d1d1f;
+            padding: 0.4rem 1rem;
             border-radius: 20px;
             font-size: 0.85rem;
-            font-weight: 500;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background: #0066cc;
+            color: white;
         }
 
         /* Contact Section */
         .contact-content {
-            background: white;
-            padding: 3rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f7 100%);
+            padding: 4rem 3rem;
+            border-radius: 20px;
             text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .contact-content > p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            color: #1d1d1f;
+            line-height: 1.6;
         }
 
         .contact-info {
             display: flex;
             justify-content: center;
-            gap: 3rem;
+            gap: 4rem;
             flex-wrap: wrap;
-            margin-top: 2rem;
         }
 
         .contact-item {
@@ -238,52 +356,89 @@
             flex-direction: column;
             align-items: center;
             gap: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
         }
 
         .contact-item strong {
-            color: #1e3a5f;
-            font-size: 1.1rem;
+            color: #6e6e73;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
         }
 
         .contact-item a {
-            color: #2c5f8d;
+            color: #0066cc;
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
         }
 
         .contact-item a:hover {
-            color: #8b7355;
+            color: #004999;
+        }
+
+        .contact-item span {
+            color: #1d1d1f;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
 
         /* Footer */
         footer {
-            background: #1e3a5f;
-            color: white;
+            background: white;
+            color: #86868b;
             text-align: center;
-            padding: 2rem;
+            padding: 2.5rem;
             margin-top: 4rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             header h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
 
-            header p {
-                font-size: 1.1rem;
+            header .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-text {
+                text-align: center;
             }
 
             section h2 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             nav ul {
-                gap: 1rem;
+                gap: 0.3rem;
+            }
+
+            nav a {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
             }
 
             .contact-info {
-                gap: 1.5rem;
+                gap: 2rem;
+            }
+
+            .about-content,
+            .experience-item,
+            .contact-content {
+                padding: 2rem;
             }
         }
     </style>
@@ -299,61 +454,71 @@
     </nav>
 
     <header>
-        <h1>Kidell Powell</h1>
-        <p>Airline Operations Leader | Training & Development Specialist | Project Management Professional</p>
-        <p class="tagline">13 years of aviation excellence in operations, leadership development, and customer experience innovation</p>
+        <div class="header-content">
+            <div class="header-image">
+                <img src="headshot.jpg" alt="Kidell Powell Professional Headshot">
+            </div>
+            <div class="header-text">
+                <h1>Kidell Powell</h1>
+                <p class="subtitle">People-First Leader | Operations Excellence | Team Development</p>
+                <p class="tagline">Empowering teams and driving operational success through authentic leadership, innovative training, and genuine care for people</p>
+            </div>
+        </div>
     </header>
 
     <section id="about">
-        <h2>About Me</h2>
+        <h2><span class="bold">About</span> <span class="regular">Me</span></h2>
         <div class="about-content">
-            <p>I am an accomplished airline operations professional with 13 years of experience spanning Customer Service, Operations, Corporate, and Inflight Service across Delta Air Lines, JetBlue Airways, and American Airlines. My career has been defined by a passion for developing high-performing teams through innovative training programs, strategic leadership, and authentic relationship-building.</p>
+            <p>For over 13 years, I've had the privilege of working alongside incredible people in the aviation industry—from frontline teams to executive leadership. What drives me isn't just operational excellence, but the genuine connections I build and the positive impact I can have on people's lives and careers.</p>
             
-            <p>Currently serving as Field Service Manager at Delta Air Lines in Boston, I lead operational excellence initiatives that have driven a 15-point year-over-year increase in Flight Attendant customer interaction scores. My expertise lies in creating comprehensive training programs, developing standard operating procedures, designing engagement tools, and fostering positive team cultures that deliver exceptional customer experiences.</p>
+            <p>My approach to leadership is simple: lead from the heart. I believe that when people feel valued, supported, and empowered, they naturally rise to meet challenges and exceed expectations. Whether I'm developing comprehensive training programs, coaching emerging leaders, or navigating complex operational challenges, my focus remains on the people behind the process.</p>
             
-            <p>I am actively pursuing professional certifications in Project Management and Human Resource Management to complement my operational expertise and expand my impact in organizational leadership and strategic planning.</p>
+            <p>Currently serving as Field Service Manager at Delta Air Lines in Boston, I work to create environments where teams thrive. From designing engagement tools to implementing strategic initiatives, I'm passionate about removing barriers and creating opportunities for growth. I'm now expanding my expertise through professional certifications in Project Management and Human Resource Management, always seeking new ways to better serve and support the teams I work with.</p>
 
-            <div class="skills-list">
-                <div class="skill-item">Leadership & Team Development</div>
-                <div class="skill-item">Training Program Design</div>
-                <div class="skill-item">Operations Management</div>
-                <div class="skill-item">Project Management</div>
-                <div class="skill-item">Process Improvement</div>
-                <div class="skill-item">Employee Engagement</div>
-                <div class="skill-item">Communications Design</div>
-                <div class="skill-item">Data Analysis (Tableau)</div>
-                <div class="skill-item">Customer Experience</div>
-                <div class="skill-item">Relationship Building</div>
+            <div class="skills-section">
+                <h3><span class="bold">Core</span> <span class="regular">Competencies</span></h3>
+                <div class="skills-grid">
+                    <div class="skill-item">People-First Leadership</div>
+                    <div class="skill-item">Team Development & Coaching</div>
+                    <div class="skill-item">Training Program Design</div>
+                    <div class="skill-item">Operations Management</div>
+                    <div class="skill-item">Project Management</div>
+                    <div class="skill-item">Process Improvement</div>
+                    <div class="skill-item">Employee Engagement</div>
+                    <div class="skill-item">Strategic Communications</div>
+                    <div class="skill-item">Data-Driven Decision Making</div>
+                    <div class="skill-item">Relationship Building</div>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="experience">
-        <h2>Professional Experience</h2>
+        <h2><span class="bold">Professional</span> <span class="regular">Journey</span></h2>
 
         <div class="experience-item">
             <h3>Field Service Manager</h3>
             <div class="company">Delta Air Lines</div>
             <div class="date-location">May 2022 - Present | Boston, MA</div>
             <ul>
-                <li>Designed and delivered comprehensive training presentations for 100+ Purser Initial program graduates, significantly improving onboarding effectiveness and engagement</li>
-                <li>Developed and implemented leadership engagement strategies that drove a +15-point increase in Flight Attendant customer interaction scores year-over-year</li>
-                <li>Orchestrated the grand opening of the Inflight Service facility at BOS Terminal E, managing all logistics and creating impactful executive presentations</li>
-                <li>Lead Terminal E Field Service Managers in delivering elevated experiences through SOP maintenance, engagement tool development, and customer interaction coaching</li>
-                <li>Created repository of 90+ branded media templates incorporating Brand Attributes and recognition frameworks</li>
-                <li>Developed comprehensive Leader Resource Hub on SharePoint featuring operational tools, communication guides, and standardized processes</li>
+                <li>Partner with 100+ team members to deliver exceptional customer experiences through authentic leadership and meaningful engagement strategies</li>
+                <li>Create and facilitate comprehensive training programs that support new leaders in their development journey, resulting in improved confidence and performance</li>
+                <li>Collaborate with cross-functional partners to drive continuous improvement initiatives, contributing to sustained year-over-year growth in customer satisfaction scores</li>
+                <li>Lead the successful launch of the Terminal E Inflight Service facility, bringing together multiple stakeholders and creating a welcoming space for our team</li>
+                <li>Design accessible resources and tools that empower leaders to succeed, including standard operating procedures, communication guides, and recognition frameworks</li>
+                <li>Foster a culture of appreciation by developing systems that celebrate team achievements and individual contributions</li>
             </ul>
         </div>
 
         <div class="experience-item">
-            <h3>Flight Attendant</h3>
+            <h3>Flight Attendant & Purser</h3>
             <div class="company">Delta Air Lines | JetBlue Airways</div>
             <div class="date-location">May 2017 - May 2022 | New York, NY</div>
             <ul>
-                <li>Successfully completed competitive Purser selection and training program</li>
-                <li>Ensured onboard customer safety, security, and exceptional service delivery</li>
-                <li>Maintained professional brand standards and resolved crew/customer conflicts efficiently</li>
-                <li>Provided coaching to crew members on service procedures and standards</li>
+                <li>Built genuine connections with customers and crew members, creating positive experiences during every flight</li>
+                <li>Supported and mentored fellow crew members, sharing knowledge and promoting collaborative problem-solving</li>
+                <li>Earned selection to the Purser program through demonstrated leadership and commitment to service excellence</li>
+                <li>Maintained calm and effective communication during challenging situations, always prioritizing safety and care</li>
             </ul>
         </div>
 
@@ -362,12 +527,10 @@
             <div class="company">American Airlines</div>
             <div class="date-location">May 2016 - May 2017 | Dallas-Fort Worth, TX</div>
             <ul>
-                <li>Served as primary interface between Airport Operations, IOC, reservations, and sales offices for inventory management</li>
-                <li>Identified revenue generating and cost saving opportunities across operational systems</li>
-                <li>Coordinated customer rerouting during oversales, cancellations, and irregular operations</li>
-                <li>Ensured DOT regulatory compliance including denied boarding compensation procedures</li>
-                <li>Mentored up to 3 new hire analysts providing on-the-job training</li>
-                <li>Reviewed and facilitated departmental curricula and lesson plans for training programs</li>
+                <li>Served as a trusted resource for airport operations and reservations teams, building strong cross-departmental relationships</li>
+                <li>Supported customers during irregular operations by coordinating accommodations and solutions with empathy and efficiency</li>
+                <li>Mentored new team members, sharing knowledge and providing patient guidance during their onboarding journey</li>
+                <li>Collaborated with training teams to enhance learning materials and improve the new hire experience</li>
             </ul>
         </div>
 
@@ -376,85 +539,85 @@
             <div class="company">American Airlines</div>
             <div class="date-location">January 2014 - May 2016 | Los Angeles, CA</div>
             <ul>
-                <li>Managed full passenger lifecycle operations ensuring 100% compliance with DOT, FAA, and TSA regulations</li>
-                <li>Resolved complex customer service issues during irregular operations through rebooking, accommodations coordination, and ticket modifications</li>
-                <li>Delivered exceptional service to diverse passenger populations including special assistance passengers and international travelers</li>
+                <li>Connected with diverse passengers every day, ensuring everyone felt welcomed and cared for regardless of their circumstances</li>
+                <li>Navigated complex operational challenges with composure, always seeking solutions that put customers first</li>
+                <li>Provided attentive support to passengers with special needs, creating seamless and dignified travel experiences</li>
             </ul>
         </div>
     </section>
 
     <section id="projects">
-        <h2>Featured Projects</h2>
+        <h2><span class="bold">Featured</span> <span class="regular">Work</span></h2>
 
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-content">
-                    <h3>Terminal E Standard Operating Procedures</h3>
-                    <p>Developed comprehensive 18-page SOP guide for Boston Terminal E operations including opening/closing procedures, IROP protocols, access procedures, and resource management. Created integrated job aids and contact directories to ensure operational consistency across leadership team.</p>
+                    <h3>Terminal E Operations Guide</h3>
+                    <p>Created a comprehensive resource that supports leaders in delivering consistent, excellent service. This guide brings clarity to complex processes and empowers teams to handle everything from daily operations to unexpected challenges with confidence.</p>
                     <div class="project-tags">
-                        <span class="tag">Process Documentation</span>
-                        <span class="tag">Operations</span>
-                        <span class="tag">Training</span>
+                        <span class="tag">Resource Development</span>
+                        <span class="tag">Team Support</span>
+                        <span class="tag">Process Clarity</span>
                     </div>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-content">
-                    <h3>Leader Engagement & Team Talk Guides</h3>
-                    <p>Created monthly Team Talk and Concourse guides providing leaders with aligned messaging, safety conversations, recognition frameworks, and operational updates. Designed to drive meaningful engagement and consistent communication across all shifts and flight operations.</p>
+                    <h3>Leader Engagement Framework</h3>
+                    <p>Designed monthly connection tools that help leaders maintain meaningful touchpoints with their teams. These resources provide talking points, recognition opportunities, and safety conversations that keep everyone aligned and engaged.</p>
                     <div class="project-tags">
-                        <span class="tag">Communications</span>
-                        <span class="tag">Leadership Development</span>
-                        <span class="tag">Engagement</span>
+                        <span class="tag">Leadership Support</span>
+                        <span class="tag">Team Connection</span>
+                        <span class="tag">Communication</span>
                     </div>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-content">
-                    <h3>Recognition & Culture Program</h3>
-                    <p>Built repository of 90+ media templates incorporating brand attributes and recognition elements. Implemented systematic recognition processes for milestones, performance achievements, and customer feedback, significantly improving team morale and engagement.</p>
+                    <h3>Recognition & Appreciation Program</h3>
+                    <p>Built a system that makes celebrating our people simple and meaningful. From milestone moments to everyday excellence, this program helps ensure no achievement goes unnoticed and everyone feels valued.</p>
                     <div class="project-tags">
-                        <span class="tag">Graphic Design</span>
-                        <span class="tag">Employee Recognition</span>
-                        <span class="tag">Culture</span>
+                        <span class="tag">Culture Building</span>
+                        <span class="tag">Team Appreciation</span>
+                        <span class="tag">Design</span>
                     </div>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-content">
-                    <h3>Purser Hiring & Development Program</h3>
-                    <p>Designed and facilitated Purser hiring information sessions and engagement events. Developed presentation materials, onboarding curriculum, and Leader-to-Leader meeting frameworks that improved program participation and candidate quality.</p>
+                    <h3>Purser Development Initiative</h3>
+                    <p>Partnered with aspiring leaders to share insights about the Purser role and what it truly means to lead with heart. Through informational sessions and thoughtful onboarding support, helped candidates understand the impact they can have.</p>
                     <div class="project-tags">
-                        <span class="tag">Talent Acquisition</span>
-                        <span class="tag">Curriculum Design</span>
-                        <span class="tag">Presentations</span>
+                        <span class="tag">Career Development</span>
+                        <span class="tag">Mentorship</span>
+                        <span class="tag">Program Design</span>
                     </div>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-content">
-                    <h3>Terminal E Grand Opening Event</h3>
-                    <p>Orchestrated complete logistics and communication strategy for IFS Terminal E facility grand opening. Created run-of-show documentation, pre-event communications, and executive-level presentations marking major milestone for Boston operations after 2-year planning period.</p>
+                    <h3>Terminal E Launch Project</h3>
+                    <p>Coordinated a complex facility opening by bringing together multiple teams and stakeholders. Created a welcoming environment and seamless transition process that set our team up for success in their new space.</p>
                     <div class="project-tags">
-                        <span class="tag">Project Management</span>
-                        <span class="tag">Event Planning</span>
-                        <span class="tag">Stakeholder Management</span>
+                        <span class="tag">Project Coordination</span>
+                        <span class="tag">Change Management</span>
+                        <span class="tag">Stakeholder Engagement</span>
                     </div>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-content">
-                    <h3>CrowdStrike IROP Response & Process Improvement</h3>
-                    <p>Identified critical process improvement opportunity during severe irregular operations event. Implemented centralized reporting and tracking platform that significantly improved efficiency, awareness, and crew communication during crisis management.</p>
+                    <h3>Crisis Response Innovation</h3>
+                    <p>During a major operational disruption, identified an opportunity to better support our team through improved communication and tracking. Quickly implemented a solution that reduced stress and improved outcomes for everyone involved.</p>
                     <div class="project-tags">
-                        <span class="tag">Crisis Management</span>
-                        <span class="tag">Process Improvement</span>
+                        <span class="tag">Problem Solving</span>
                         <span class="tag">Innovation</span>
+                        <span class="tag">Team Support</span>
                     </div>
                 </div>
             </div>
@@ -462,9 +625,9 @@
     </section>
 
     <section id="contact">
-        <h2>Get In Touch</h2>
+        <h2><span class="bold">Let's</span> <span class="regular">Connect</span></h2>
         <div class="contact-content">
-            <p style="font-size: 1.2rem; margin-bottom: 2rem;">I'm open to opportunities in airline operations, training and development, project management, and human resources leadership.</p>
+            <p>I'm excited to explore opportunities where I can contribute to building strong teams, improving operations, and creating positive workplace cultures. Let's start a conversation.</p>
             
             <div class="contact-info">
                 <div class="contact-item">
