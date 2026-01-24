@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kidell Powell - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5f8d 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 1.1rem;
+        }
+
+        nav a:hover {
+            color: #d4a574;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5f8d 50%, #8b7355 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+        }
+
+        .tagline {
+            font-size: 1rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Sections */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #1e3a5f;
+            border-bottom: 3px solid #8b7355;
+            padding-bottom: 0.5rem;
+        }
+
+        /* About Section */
+        .about-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            line-height: 1.8;
+        }
+
+        .about-content p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-item {
+            background: #e8f4f8;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #2c5f8d;
+            font-weight: 500;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 5px solid #2c5f8d;
+        }
+
+        .experience-item h3 {
+            color: #1e3a5f;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .company {
+            color: #8b7355;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-item .date-location {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .experience-item li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-card h3 {
+            color: #1e3a5f;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .project-card p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: #e8f4f8;
+            color: #2c5f8d;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item strong {
+            color: #1e3a5f;
+            font-size: 1.1rem;
+        }
+
+        .contact-item a {
+            color: #2c5f8d;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        .contact-item a:hover {
+            color: #8b7355;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e3a5f;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1.1rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .contact-info {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Kidell Powell</h1>
+        <p>Airline Operations Leader | Training & Development Specialist | Project Management Professional</p>
+        <p class="tagline">13 years of aviation excellence in operations, leadership development, and customer experience innovation</p>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <p>I am an accomplished airline operations professional with 13 years of experience spanning Customer Service, Operations, Corporate, and Inflight Service across Delta Air Lines, JetBlue Airways, and American Airlines. My career has been defined by a passion for developing high-performing teams through innovative training programs, strategic leadership, and authentic relationship-building.</p>
+            
+            <p>Currently serving as Field Service Manager at Delta Air Lines in Boston, I lead operational excellence initiatives that have driven a 15-point year-over-year increase in Flight Attendant customer interaction scores. My expertise lies in creating comprehensive training programs, developing standard operating procedures, designing engagement tools, and fostering positive team cultures that deliver exceptional customer experiences.</p>
+            
+            <p>I am actively pursuing professional certifications in Project Management and Human Resource Management to complement my operational expertise and expand my impact in organizational leadership and strategic planning.</p>
+
+            <div class="skills-list">
+                <div class="skill-item">Leadership & Team Development</div>
+                <div class="skill-item">Training Program Design</div>
+                <div class="skill-item">Operations Management</div>
+                <div class="skill-item">Project Management</div>
+                <div class="skill-item">Process Improvement</div>
+                <div class="skill-item">Employee Engagement</div>
+                <div class="skill-item">Communications Design</div>
+                <div class="skill-item">Data Analysis (Tableau)</div>
+                <div class="skill-item">Customer Experience</div>
+                <div class="skill-item">Relationship Building</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Professional Experience</h2>
+
+        <div class="experience-item">
+            <h3>Field Service Manager</h3>
+            <div class="company">Delta Air Lines</div>
+            <div class="date-location">May 2022 - Present | Boston, MA</div>
+            <ul>
+                <li>Designed and delivered comprehensive training presentations for 100+ Purser Initial program graduates, significantly improving onboarding effectiveness and engagement</li>
+                <li>Developed and implemented leadership engagement strategies that drove a +15-point increase in Flight Attendant customer interaction scores year-over-year</li>
+                <li>Orchestrated the grand opening of the Inflight Service facility at BOS Terminal E, managing all logistics and creating impactful executive presentations</li>
+                <li>Lead Terminal E Field Service Managers in delivering elevated experiences through SOP maintenance, engagement tool development, and customer interaction coaching</li>
+                <li>Created repository of 90+ branded media templates incorporating Brand Attributes and recognition frameworks</li>
+                <li>Developed comprehensive Leader Resource Hub on SharePoint featuring operational tools, communication guides, and standardized processes</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <h3>Flight Attendant</h3>
+            <div class="company">Delta Air Lines | JetBlue Airways</div>
+            <div class="date-location">May 2017 - May 2022 | New York, NY</div>
+            <ul>
+                <li>Successfully completed competitive Purser selection and training program</li>
+                <li>Ensured onboard customer safety, security, and exceptional service delivery</li>
+                <li>Maintained professional brand standards and resolved crew/customer conflicts efficiently</li>
+                <li>Provided coaching to crew members on service procedures and standards</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <h3>Revenue Management Analyst</h3>
+            <div class="company">American Airlines</div>
+            <div class="date-location">May 2016 - May 2017 | Dallas-Fort Worth, TX</div>
+            <ul>
+                <li>Served as primary interface between Airport Operations, IOC, reservations, and sales offices for inventory management</li>
+                <li>Identified revenue generating and cost saving opportunities across operational systems</li>
+                <li>Coordinated customer rerouting during oversales, cancellations, and irregular operations</li>
+                <li>Ensured DOT regulatory compliance including denied boarding compensation procedures</li>
+                <li>Mentored up to 3 new hire analysts providing on-the-job training</li>
+                <li>Reviewed and facilitated departmental curricula and lesson plans for training programs</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <h3>Customer Service Agent</h3>
+            <div class="company">American Airlines</div>
+            <div class="date-location">January 2014 - May 2016 | Los Angeles, CA</div>
+            <ul>
+                <li>Managed full passenger lifecycle operations ensuring 100% compliance with DOT, FAA, and TSA regulations</li>
+                <li>Resolved complex customer service issues during irregular operations through rebooking, accommodations coordination, and ticket modifications</li>
+                <li>Delivered exceptional service to diverse passenger populations including special assistance passengers and international travelers</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Featured Projects</h2>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Terminal E Standard Operating Procedures</h3>
+                    <p>Developed comprehensive 18-page SOP guide for Boston Terminal E operations including opening/closing procedures, IROP protocols, access procedures, and resource management. Created integrated job aids and contact directories to ensure operational consistency across leadership team.</p>
+                    <div class="project-tags">
+                        <span class="tag">Process Documentation</span>
+                        <span class="tag">Operations</span>
+                        <span class="tag">Training</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Leader Engagement & Team Talk Guides</h3>
+                    <p>Created monthly Team Talk and Concourse guides providing leaders with aligned messaging, safety conversations, recognition frameworks, and operational updates. Designed to drive meaningful engagement and consistent communication across all shifts and flight operations.</p>
+                    <div class="project-tags">
+                        <span class="tag">Communications</span>
+                        <span class="tag">Leadership Development</span>
+                        <span class="tag">Engagement</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Recognition & Culture Program</h3>
+                    <p>Built repository of 90+ media templates incorporating brand attributes and recognition elements. Implemented systematic recognition processes for milestones, performance achievements, and customer feedback, significantly improving team morale and engagement.</p>
+                    <div class="project-tags">
+                        <span class="tag">Graphic Design</span>
+                        <span class="tag">Employee Recognition</span>
+                        <span class="tag">Culture</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Purser Hiring & Development Program</h3>
+                    <p>Designed and facilitated Purser hiring information sessions and engagement events. Developed presentation materials, onboarding curriculum, and Leader-to-Leader meeting frameworks that improved program participation and candidate quality.</p>
+                    <div class="project-tags">
+                        <span class="tag">Talent Acquisition</span>
+                        <span class="tag">Curriculum Design</span>
+                        <span class="tag">Presentations</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Terminal E Grand Opening Event</h3>
+                    <p>Orchestrated complete logistics and communication strategy for IFS Terminal E facility grand opening. Created run-of-show documentation, pre-event communications, and executive-level presentations marking major milestone for Boston operations after 2-year planning period.</p>
+                    <div class="project-tags">
+                        <span class="tag">Project Management</span>
+                        <span class="tag">Event Planning</span>
+                        <span class="tag">Stakeholder Management</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>CrowdStrike IROP Response & Process Improvement</h3>
+                    <p>Identified critical process improvement opportunity during severe irregular operations event. Implemented centralized reporting and tracking platform that significantly improved efficiency, awareness, and crew communication during crisis management.</p>
+                    <div class="project-tags">
+                        <span class="tag">Crisis Management</span>
+                        <span class="tag">Process Improvement</span>
+                        <span class="tag">Innovation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-content">
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">I'm open to opportunities in airline operations, training and development, project management, and human resources leadership.</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <strong>Email</strong>
+                    <a href="mailto:kidell.powellj@gmail.com">kidell.powellj@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Phone</strong>
+                    <a href="tel:774-789-1843">774-789-1843</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Location</strong>
+                    <span>Boston, MA</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Kidell Powell. All rights reserved.</p>
+    </footer>
+</body>
+</html>
