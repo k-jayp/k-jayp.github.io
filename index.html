@@ -420,54 +420,260 @@
 
         .contact-content > p {
             font-size: 1.3rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             color: #ffffff;
             line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 4rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-item {
-            display: flex;
-            flex-direction: column;
+        /* Contact Button */
+        .contact-btn {
+            display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
+            background: #991933;
+            color: #ffffff;
+            border: none;
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Open Sans', sans-serif;
+            box-shadow: 0 4px 15px rgba(153, 25, 51, 0.4);
+        }
+
+        .contact-btn:hover {
+            background: #cc2244;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(153, 25, 51, 0.5);
+        }
+
+        .contact-btn svg {
+            width: 24px;
+            height: 24px;
             transition: transform 0.3s ease;
         }
 
-        .contact-item:hover {
-            transform: translateY(-5px);
+        .contact-btn:hover svg {
+            transform: translateX(5px);
         }
 
-        .contact-item strong {
+        .contact-location {
+            margin-top: 2rem;
             color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
         }
 
-        .contact-item a {
+        .contact-location svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 42, 80, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            padding: 1rem;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Modal Content */
+        .modal {
+            background: #ffffff;
+            border-radius: 24px;
+            max-width: 550px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: translateY(30px) scale(0.95);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #002A50 0%, #003d73 100%);
+            padding: 2rem 2.5rem;
+            border-radius: 24px 24px 0 0;
+            position: relative;
+        }
+
+        .modal-header h3 {
             color: #ffffff;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 600;
-            transition: color 0.3s ease;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
         }
 
-        .contact-item a:hover {
-            color: #991933;
+        .modal-header p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
         }
 
-        .contact-item span {
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: rotate(90deg);
+        }
+
+        .modal-close svg {
+            width: 20px;
+            height: 20px;
             color: #ffffff;
-            font-size: 1.2rem;
+        }
+
+        .modal-body {
+            padding: 2.5rem;
+        }
+
+        /* Form Styles */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
             font-weight: 600;
+            color: #002A50;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: 2px solid #e5e5e7;
+            border-radius: 12px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #fafafa;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #002A50;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(0, 42, 80, 0.1);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #86868b;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #991933 0%, #cc2244 100%);
+            color: #ffffff;
+            border: none;
+            padding: 1.2rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Open Sans', sans-serif;
+            margin-top: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(153, 25, 51, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Form Success State */
+        .form-success {
+            text-align: center;
+            padding: 2rem;
+            display: none;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        .form-success svg {
+            width: 80px;
+            height: 80px;
+            color: #28a745;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-success h4 {
+            color: #002A50;
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .form-success p {
+            color: #6e6e73;
+            font-size: 1rem;
         }
 
         /* Footer */
@@ -511,10 +717,6 @@
                 font-size: 0.9rem;
             }
 
-            .contact-info {
-                gap: 2rem;
-            }
-
             .about-content,
             .contact-content {
                 padding: 2rem;
@@ -536,6 +738,27 @@
             .header-image {
                 width: 150px;
                 height: 150px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-body {
+                padding: 1.5rem;
+            }
+
+            .modal-header {
+                padding: 1.5rem;
+            }
+
+            .modal-header h3 {
+                font-size: 1.5rem;
+            }
+
+            .contact-btn {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -653,11 +876,11 @@
             <div class="project-card">
                 <div class="project-content">
                     <h3>Terminal E Operations Guide</h3>
-                    <p>Created a comprehensive resource that supports leaders in delivering consistent, excellent service. This guide brings clarity to complex processes and empowers teams to handle everything from daily operations to unexpected challenges with confidence.</p>
+                    <p>I developed and maintain a comprehensive 18-page Standard Operating Procedures manual for Boston's Terminal E international operations. The guide includes opening and closing checklists, irregular operations protocols, a crew support matrix for delays, flight attendant work rule explanations, and a complete contact directory. I also built an accompanying SharePoint Leader Resource Hub that serves as a one-stop destination for operational tools, team talk guides, and cross-terminal communication.</p>
                     <div class="project-tags">
-                        <span class="tag">Resource Development</span>
-                        <span class="tag">Team Support</span>
-                        <span class="tag">Process Clarity</span>
+                        <span class="tag">SOP Development</span>
+                        <span class="tag">SharePoint</span>
+                        <span class="tag">Process Documentation</span>
                     </div>
                 </div>
             </div>
@@ -665,23 +888,23 @@
             <div class="project-card">
                 <div class="project-content">
                     <h3>Leader Engagement Framework</h3>
-                    <p>Designed monthly connection tools that help leaders maintain meaningful touchpoints with their teams. These resources provide talking points, recognition opportunities, and safety conversations that keep everyone aligned and engaged.</p>
+                    <p>I designed and maintain the "Team Talk & Concourse" guide—a dynamic resource I update regularly that equips leaders with daily show times, talking points organized by key updates, safety conversations, and performance metrics. The guide includes recognition callouts for top-performing flight attendants and Pursers, important dates, and security advisories. This tool ensures every leader delivers consistent, meaningful Team Talks aligned with current operational priorities and celebrates our people's achievements.</p>
                     <div class="project-tags">
-                        <span class="tag">Leadership Support</span>
-                        <span class="tag">Team Connection</span>
-                        <span class="tag">Communication</span>
+                        <span class="tag">Leadership Tools</span>
+                        <span class="tag">Team Communication</span>
+                        <span class="tag">Performance Tracking</span>
                     </div>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-content">
-                    <h3>Recognition & Appreciation Program</h3>
-                    <p>Built a system that makes celebrating our people simple and meaningful. From milestone moments to everyday excellence, this program helps ensure no achievement goes unnoticed and everyone feels valued.</p>
+                    <h3>Recognition & Performance Tracking System</h3>
+                    <p>I built a multi-part recognition ecosystem that includes an Excel-based GST compliance tracking system with conditional formatting to identify flight attendants needing outreach, safeguards to prevent false "zero user" communications, and a detailed process guide for monthly data management. I also created a library of over 90 branded media templates for celebrating team members—covering milestones, birthdays, customer compliments, and peer recognitions. Additionally, I developed "Channel E Vision," a lounge display system that broadcasts real-time performance metrics and FA contributions.</p>
                     <div class="project-tags">
-                        <span class="tag">Culture Building</span>
-                        <span class="tag">Team Appreciation</span>
-                        <span class="tag">Design</span>
+                        <span class="tag">Data Analytics</span>
+                        <span class="tag">Excel Automation</span>
+                        <span class="tag">Visual Design</span>
                     </div>
                 </div>
             </div>
@@ -689,35 +912,35 @@
             <div class="project-card">
                 <div class="project-content">
                     <h3>Purser Development Initiative</h3>
-                    <p>Partnered with aspiring leaders to share insights about the Purser role and what it truly means to lead with heart. Through informational sessions and thoughtful onboarding support, helped candidates understand the impact they can have.</p>
+                    <p>I created and facilitated the 2025 Purser Hiring Information Session program to attract high-performing flight attendants to the Purser role. I designed the presentation curriculum, run-of-show, and follow-up processes, then delivered four sessions. I also developed the PQMT Discussion Summary template used for annual Purser Leader-to-Leader meetings, quarterly newsletters, and action plans. As a member of the systemwide Leader-to-Leader Working Group, I contributed the "Gratitude Standard"—a process of mailing thank-you cards and emailing discussion summaries after each meeting.</p>
                     <div class="project-tags">
-                        <span class="tag">Career Development</span>
-                        <span class="tag">Mentorship</span>
                         <span class="tag">Program Design</span>
+                        <span class="tag">Curriculum Development</span>
+                        <span class="tag">Mentorship</span>
                     </div>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-content">
-                    <h3>Terminal E Launch Project</h3>
-                    <p>Coordinated a complex facility opening by bringing together multiple teams and stakeholders. Created a welcoming environment and seamless transition process that set our team up for success in their new space.</p>
+                    <h3>Terminal E IFS Lounge Launch</h3>
+                    <p>I led all communications and coordination for the Boston IFS Lounge relocation from landside to airside in Terminal E—a milestone two years in the making. I developed the pre-event communications strategy, created a detailed run-of-show for opening day, and produced post-move "ICYMI" materials to ensure all team members were informed. I coordinated with IT, facilities (JLL), and security partners (G2) to ensure a seamless transition, and I continue to manage the lounge punch list and improvement requests.</p>
                     <div class="project-tags">
                         <span class="tag">Project Coordination</span>
                         <span class="tag">Change Management</span>
-                        <span class="tag">Stakeholder Engagement</span>
+                        <span class="tag">Communications</span>
                     </div>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-content">
-                    <h3>Crisis Response Innovation</h3>
-                    <p>During a major operational disruption, identified an opportunity to better support our team through improved communication and tracking. Quickly implemented a solution that reduced stress and improved outcomes for everyone involved.</p>
+                    <h3>CrowdStrike Crisis Response Solution</h3>
+                    <p>During the July 2024 CrowdStrike outage—one of the most severe irregular operations events in recent history—I identified a critical gap in how we were tracking and closing out with affected flight attendants. I quickly built a centralized reporting and tracking platform that significantly improved efficiency, situational awareness, and follow-up completion. This solution reduced confusion, prevented duplicate outreach, and ensured every impacted team member received timely support and communication during an extremely challenging operational period.</p>
                     <div class="project-tags">
-                        <span class="tag">Problem Solving</span>
-                        <span class="tag">Innovation</span>
-                        <span class="tag">Team Support</span>
+                        <span class="tag">Crisis Management</span>
+                        <span class="tag">Process Innovation</span>
+                        <span class="tag">Rapid Solution Design</span>
                     </div>
                 </div>
             </div>
@@ -756,25 +979,137 @@
         <div class="contact-content">
             <p>I'm excited to explore opportunities where I can contribute to building strong teams, improving operations, and creating positive workplace cultures. Let's start a conversation.</p>
             
-            <div class="contact-info">
-                <div class="contact-item">
-                    <strong>Email</strong>
-                    <a href="mailto:kidell.powellj@gmail.com">kidell.powellj@gmail.com</a>
-                </div>
-                <div class="contact-item">
-                    <strong>Phone</strong>
-                    <a href="tel:774-789-1843">774-789-1843</a>
-                </div>
-                <div class="contact-item">
-                    <strong>Location</strong>
-                    <span>Boston, MA</span>
-                </div>
+            <button class="contact-btn" onclick="openModal()">
+                Get In Touch
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+            </button>
+
+            <div class="contact-location">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                Based in Boston, MA
             </div>
         </div>
     </section>
 
+    <!-- Contact Modal -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Send a Message</h3>
+                <p>I'd love to hear from you</p>
+                <button class="modal-close" onclick="closeModal()">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="contact-form" id="contactForm" action="https://formspree.io/f/xzdrpwng" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName" placeholder="John" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" placeholder="Doe" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="What's this about?" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Tell me about the opportunity or just say hello..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+
+                <div class="form-success" id="formSuccess">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <h4>Message Sent!</h4>
+                    <p>Thank you for reaching out. I'll get back to you as soon as possible.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2026 Kidell Powell. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Modal Functions
+        function openModal() {
+            document.getElementById('contactModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('contactModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('contactModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const form = this;
+            const formData = new FormData(form);
+            
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    form.style.display = 'none';
+                    document.getElementById('formSuccess').classList.add('show');
+                    
+                    // Reset and close after 3 seconds
+                    setTimeout(() => {
+                        closeModal();
+                        setTimeout(() => {
+                            form.style.display = 'flex';
+                            form.reset();
+                            document.getElementById('formSuccess').classList.remove('show');
+                        }, 400);
+                    }, 3000);
+                } else {
+                    alert('Oops! There was a problem sending your message. Please try again.');
+                }
+            }).catch(error => {
+                alert('Oops! There was a problem sending your message. Please try again.');
+            });
+        });
+    </script>
 </body>
 </html>
